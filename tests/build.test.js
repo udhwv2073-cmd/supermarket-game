@@ -148,7 +148,12 @@ test('removeAtLook sells back a shelf, frees its spot and untags it', () => {
 
   assert.equal(game.state.shelves.length, 0);
   assert.equal(game.runtime.shelves.length, 0);
-  assert.equal(game.state.cash, 575, 'half of the $150 shelf price refunded');
+  assert.equal(
+    game.state.cash,
+    580,
+    'half of the $150 shelf price plus half of the four milk units refunded'
+  );
+  assert.match(game.toasts.at(-1), /incl\. \$5 stock/, 'the toast explains the stock refund');
   assert.equal(game.interactables.length, 0, 'shelf no longer interactable');
   assert.equal(group.parent, null, 'shelf mesh detached');
   assert.ok(game.rebuilt > 0);

@@ -30,13 +30,13 @@
     "WalkCart"
   ],
   "carry": "none",
-  "spawn_weight": 1.1,
+  "spawn_weight": 1.2,
   "walk": {
     "stride": 0.95,
     "arm": 0.95,
     "bounce": 1.05,
-    "stoop": 0.0,
-    "tempo": 1.0
+    "stoop": 0,
+    "tempo": 1
   },
   "files": {
     "blend": "assets/characters/blender_source/female_customer_02.blend",

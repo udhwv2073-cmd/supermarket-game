@@ -1,14 +1,14 @@
 {
   "id": "female_customer_05",
-  "name": "Adult Woman",
+  "name": "Middle-Aged Woman",
   "gender": "female",
-  "age_group": "adult",
-  "age": 42,
-  "height_m": 1.64,
-  "tris": 19906,
-  "verts": 10317,
+  "age_group": "middle_aged",
+  "age": 56,
+  "height_m": 1.6,
+  "tris": 21512,
+  "verts": 11100,
   "bones": 22,
-  "materials": 21,
+  "materials": 24,
   "animations": [
     "Checkout",
     "Greet",
@@ -32,21 +32,45 @@
   "carry": "cart",
   "spawn_weight": 1.4,
   "walk": {
-    "stride": 0.9,
-    "arm": 0.85,
-    "bounce": 0.9,
-    "stoop": 1.0,
-    "tempo": 0.94,
+    "stride": 0.86,
+    "arm": 0.8,
+    "bounce": 0.8,
+    "stoop": 2.6,
+    "tempo": 0.9,
     "cart_arms": {
-      "UpperArm_L": [-10.19, 2.66, 0.0],
-      "UpperArm_R": [-10.19, -2.66, 0.0],
-      "LowerArm_L": [-92.34, 12.0, 0.0],
-      "LowerArm_R": [-92.34, -12.0, 0.0],
-      "Hand_L": [0.0, 0.0, 0.0],
-      "Hand_R": [0.0, 0.0, 0.0]
+      "UpperArm_L": [
+        -13.11,
+        1.84,
+        0
+      ],
+      "UpperArm_R": [
+        -13.11,
+        -1.84,
+        0
+      ],
+      "LowerArm_L": [
+        -94.31,
+        12,
+        0
+      ],
+      "LowerArm_R": [
+        -94.31,
+        -12,
+        0
+      ],
+      "Hand_L": [
+        0,
+        0,
+        0
+      ],
+      "Hand_R": [
+        0,
+        0,
+        0
+      ]
     }
   },
-  "grip_gap": 5.912011807293663e-5,
+  "grip_gap": 0.000041201721479404134,
   "files": {
     "blend": "assets/characters/blender_source/female_customer_05.blend",
     "glb": "assets/characters/exports/glb/female_customer_05.glb",

@@ -30,12 +30,12 @@
     "WalkCart"
   ],
   "carry": "none",
-  "spawn_weight": 0.8,
+  "spawn_weight": 0.9,
   "walk": {
     "stride": 0.92,
     "arm": 1.15,
     "bounce": 1.35,
-    "stoop": 0.0,
+    "stoop": 0,
     "tempo": 1.05
   },
   "files": {

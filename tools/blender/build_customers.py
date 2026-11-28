@@ -76,7 +76,7 @@ SPECS = [
         shoes=dict(color=0xe8e4dc, accent=0xc23a3a),
         accessories=["backpack"], accent_color=0xc23a3a, carry="none",
         walk=dict(stride=0.92, arm=1.15, bounce=1.35, stoop=0.0, tempo=1.05),
-        spawn_weight=0.8,
+        spawn_weight=0.9,
     ),
     dict(
         id="male_customer_02", name="Teenage Boy", sex="M", age=15, height=1.63,
@@ -90,7 +90,7 @@ SPECS = [
         shoes=dict(color=0xf0ece2, accent=0x2b2f36),
         accessories=["headphones"], accent_color=0x22262b, carry="none",
         walk=dict(stride=1.0, arm=1.0, bounce=1.1, stoop=0.0, tempo=1.0),
-        spawn_weight=1.1,
+        spawn_weight=1.2,
     ),
     dict(
         id="male_customer_03", name="Young Man", sex="M", age=22, height=1.77,
@@ -104,35 +104,35 @@ SPECS = [
         shoes=dict(color=0xf3efe6, accent=0x8b8f96),
         accessories=["watch"], accent_color=0x2c3440, carry="basket",
         walk=dict(stride=1.0, arm=1.0, bounce=1.0, stoop=0.0, tempo=1.0),
-        spawn_weight=1.5,
+        spawn_weight=1.6,
     ),
     dict(
-        id="male_customer_04", name="Young Man (Smart Casual)", sex="M", age=27,
-        height=1.82, frame="athletic", head_ratio=0.132, build=1.07,
-        face=dict(width=1.04, jaw=1.08, chin=1.0, eyes=0.97, eye_size=0.96,
-                  nose=1.08, lips=1.05, brow=1.1, mouth=1.02),
-        skin=0x7a4d33, hair=0x171310, hair_style="curly_short",
+        id="male_customer_04", name="Adult Man", sex="M", age=34,
+        height=1.80, frame="average", head_ratio=0.136, build=1.03,
+        face=dict(width=1.02, jaw=1.06, chin=1.0, eyes=0.98, eye_size=0.97,
+                  nose=1.05, lips=1.02, brow=1.06, mouth=1.01),
+        skin=0x8a5a3c, hair=0x241c15, hair_style="side_part",
         iris=0x2e2118,
-        top=dict(kind="sweater", color=0x7a2f3a, accent=0x3a2024, sleeve="long"),
-        bottom=dict(kind="trousers", color=0x343a44),
-        shoes=dict(color=0x4a3226, accent=0x221a16),
-        accessories=["watch", "shoulder_bag"], accent_color=0x5a3f2c,
+        top=dict(kind="shirt", color=0x3e5c72, accent=0xe9e5d8, sleeve="long"),
+        bottom=dict(kind="trousers", color=0x3a3f4a),
+        shoes=dict(color=0x3a2a22, accent=0x201814),
+        accessories=["watch"], accent_color=0x2c3440,
         carry="none",
-        walk=dict(stride=1.04, arm=0.95, bounce=0.95, stoop=0.0, tempo=0.98),
+        walk=dict(stride=1.0, arm=0.94, bounce=0.94, stoop=0.6, tempo=0.98),
         spawn_weight=1.4,
     ),
     dict(
-        id="male_customer_05", name="Adult Man", sex="M", age=41, height=1.75,
-        frame="heavy", head_ratio=0.138, build=1.1,
-        face=dict(width=1.05, jaw=1.06, chin=0.98, eyes=0.96, eye_size=0.94,
-                  nose=1.06, lips=1.0, brow=1.04, mouth=1.0),
-        skin=0xc08e66, hair=0x4a3324, hair_style="receding",
-        iris=0x3b2c20,
-        top=dict(kind="shirt", color=0x4b6b8a, accent=0xe6e2d6, sleeve="long"),
-        bottom=dict(kind="chinos", color=0x6f6656),
+        id="male_customer_05", name="Middle-Aged Man", sex="M", age=56, height=1.73,
+        frame="heavy", head_ratio=0.142, build=1.06,
+        face=dict(width=1.05, jaw=1.04, chin=0.98, eyes=0.95, eye_size=0.93,
+                  nose=1.08, lips=0.98, brow=1.0, mouth=1.0),
+        skin=0xc09472, hair=0x726b61, hair_style="receding",
+        iris=0x3b2c20, mature=True,
+        top=dict(kind="cardigan", color=0x5c6659, accent=0xe6e0d0, sleeve="long"),
+        bottom=dict(kind="chinos", color=0x6b6353),
         shoes=dict(color=0x3a2a22, accent=0x201814),
-        accessories=["glasses"], accent_color=0x2f343a, carry="cart",
-        walk=dict(stride=0.98, arm=0.9, bounce=0.9, stoop=1.5, tempo=0.96),
+        accessories=["glasses", "moustache"], accent_color=0x2f343a, carry="cart",
+        walk=dict(stride=0.9, arm=0.84, bounce=0.8, stoop=3.2, tempo=0.9),
         spawn_weight=1.4,
     ),
     dict(
@@ -147,7 +147,7 @@ SPECS = [
         shoes=dict(color=0x3a2a22, accent=0x241c16),
         accessories=["glasses"], accent_color=0x35383d, carry="none",
         walk=dict(stride=0.8, arm=0.72, bounce=0.7, stoop=7.0, tempo=0.86),
-        spawn_weight=1.0,
+        spawn_weight=1.1,
     ),
     dict(
         id="female_customer_01", name="Young Girl", sex="F", age=9, height=1.29,
@@ -161,7 +161,7 @@ SPECS = [
         shoes=dict(color=0xf0c6cf, accent=0xffffff),
         accessories=["backpack"], accent_color=0x8b5fb0, carry="none",
         walk=dict(stride=0.9, arm=1.2, bounce=1.4, stoop=0.0, tempo=1.06),
-        spawn_weight=0.8,
+        spawn_weight=0.9,
     ),
     dict(
         id="female_customer_02", name="Teenage Girl", sex="F", age=15, height=1.6,
@@ -175,7 +175,7 @@ SPECS = [
         shoes=dict(color=0xf1ece2, accent=0x3f5f86),
         accessories=["necklace"], accent_color=0xd8c48a, carry="none",
         walk=dict(stride=0.95, arm=0.95, bounce=1.05, stoop=0.0, tempo=1.0),
-        spawn_weight=1.1,
+        spawn_weight=1.2,
     ),
     dict(
         id="female_customer_03", name="Young Woman", sex="F", age=23, height=1.68,
@@ -189,34 +189,34 @@ SPECS = [
         shoes=dict(color=0xf2eee4, accent=0x2f8f8a),
         accessories=[], accent_color=0x2f8f8a, carry="basket",
         walk=dict(stride=0.98, arm=0.95, bounce=1.0, stoop=0.0, tempo=1.0),
-        spawn_weight=1.5,
+        spawn_weight=1.6,
     ),
     dict(
-        id="female_customer_04", name="Young Woman (Smart Casual)", sex="F",
-        age=28, height=1.73, frame="slim", head_ratio=0.138, build=0.98,
-        face=dict(width=1.0, jaw=0.9, chin=0.95, eyes=1.0, eye_size=1.0,
-                  nose=0.98, lips=1.1, brow=1.05, mouth=1.0),
-        skin=0x6f452f, hair=0x120f0d, hair_style="curly_bob",
+        id="female_customer_04", name="Adult Woman", sex="F",
+        age=34, height=1.71, frame="average", head_ratio=0.137, build=1.0,
+        face=dict(width=1.0, jaw=0.92, chin=0.96, eyes=1.0, eye_size=1.0,
+                  nose=0.99, lips=1.06, brow=1.02, mouth=1.0),
+        skin=0x8a5a3c, hair=0x2c1d14, hair_style="shoulder_wavy",
         iris=0x241a13,
-        top=dict(kind="blouse", color=0xe8ddc8, accent=0xb39a6a, sleeve="long"),
-        bottom=dict(kind="trousers", color=0x4a3f3a),
+        top=dict(kind="jacket", color=0x3b5464, accent=0xe8dfcc, sleeve="long"),
+        bottom=dict(kind="trousers", color=0x3d3f47),
         shoes=dict(color=0x2b2a2a, accent=0x141313),
-        accessories=["handbag"], accent_color=0x7a4a2c, carry="none",
-        walk=dict(stride=0.95, arm=0.9, bounce=0.95, stoop=0.0, tempo=0.98),
+        accessories=["watch", "handbag"], accent_color=0x7a4a2c, carry="none",
+        walk=dict(stride=1.0, arm=0.92, bounce=0.92, stoop=0.6, tempo=0.98),
         spawn_weight=1.4,
     ),
     dict(
-        id="female_customer_05", name="Adult Woman", sex="F", age=42, height=1.64,
-        frame="average", head_ratio=0.142, build=1.0,
-        face=dict(width=1.01, jaw=0.95, chin=0.97, eyes=1.0, eye_size=0.98,
-                  nose=0.99, lips=1.0, brow=0.98, mouth=1.0),
-        skin=0xba8a63, hair=0x4d3324, hair_style="shoulder_wavy",
-        iris=0x4a3a28,
-        top=dict(kind="blouse", color=0x8f7bb0, accent=0xe8e4d8, sleeve="three_quarter"),
-        bottom=dict(kind="trousers", color=0x3d4048),
+        id="female_customer_05", name="Middle-Aged Woman", sex="F", age=56, height=1.60,
+        frame="average", head_ratio=0.144, build=1.0,
+        face=dict(width=1.01, jaw=0.94, chin=0.97, eyes=0.98, eye_size=0.96,
+                  nose=1.0, lips=0.96, brow=0.92, mouth=0.98),
+        skin=0xba8a63, hair=0x71675f, hair_style="curly_bob",
+        iris=0x4a3a28, mature=True,
+        top=dict(kind="cardigan", color=0x8a6a72, accent=0xf0ead8, sleeve="long"),
+        bottom=dict(kind="skirt", color=0x4d4657, length=0.74),
         shoes=dict(color=0x4a3a30, accent=0xf0ece0),
-        accessories=["glasses"], accent_color=0x3a3630, carry="cart",
-        walk=dict(stride=0.9, arm=0.85, bounce=0.9, stoop=1.0, tempo=0.94),
+        accessories=["glasses", "handbag"], accent_color=0x3a3630, carry="cart",
+        walk=dict(stride=0.86, arm=0.8, bounce=0.8, stoop=2.6, tempo=0.9),
         spawn_weight=1.4,
     ),
     dict(
@@ -231,7 +231,7 @@ SPECS = [
         shoes=dict(color=0x4a3a32, accent=0x2a201b),
         accessories=["glasses", "handbag"], accent_color=0x6b4a33, carry="none",
         walk=dict(stride=0.74, arm=0.68, bounce=0.65, stoop=8.0, tempo=0.84),
-        spawn_weight=1.0,
+        spawn_weight=1.1,
     ),
 ]
 
@@ -627,6 +627,36 @@ def build_face(P, spec, mats, objs, shape):
     objs.append(tube(f"{cid}_mouth", line, [hh * 0.0015] * 11,
                      [hh * 0.0013] * 11, 5, mats["mouth"], {"Head": 1.0}))
 
+    if spec.get("mature"):
+        # Age is modelled, not just labelled: soft nasolabial folds frame the
+        # mouth and two shallow forehead creases sit above the brows.
+        for side, sx in (("L", 1), ("R", -1)):
+            fold = []
+            for k in range(5):
+                t = k / 4.0
+                fz = nose_base_z - hh * (0.012 + 0.078 * t)
+                fx = sx * hw * (0.20 + 0.09 * t)
+                fu = shape.u_of_z(fz)
+                fold.append(Vector((fx, shape.surface_y(fx, fu) - hh * 0.0015, fz)))
+            objs.append(tube(
+                f"{cid}_nasolabial_{side}", fold,
+                [hh * 0.0022, hh * 0.0024, hh * 0.0022, hh * 0.0018, hh * 0.0012],
+                [hh * 0.0012] * 5, 5, mats["skin_dark"], {"Head": 1.0}))
+        for k in range(2):
+            z = brow_z + hh * (0.058 + 0.046 * k)
+            pts = []
+            for q in range(9):
+                t = -1.0 + 2.0 * q / 8.0
+                x = t * hw * 0.52
+                zz = z + (t * t) * hh * 0.006
+                u = shape.u_of_z(zz)
+                pts.append(Vector((x, shape.surface_y(x, u) - hh * 0.0012, zz)))
+            radii = [hh * 0.0016 * (0.5 + 0.5 * (1.0 - abs(-1.0 + 2.0 * q / 8.0)))
+                     for q in range(9)]
+            objs.append(tube(f"{cid}_forehead_{k}", pts, radii,
+                             [hh * 0.0009] * 9, 4, mats["skin_dark"],
+                             {"Head": 1.0}))
+
 
 # --------------------------------------------------------------------------- #
 # hair
@@ -803,8 +833,9 @@ def build_hair(P, spec, mats, objs, shape):
             for i in range(12):
                 a = math.radians(40) + math.radians(280) * i / 11.0
                 c = shape.point(0.0, a, 0.03) + Vector((0, 0, -hh * 0.05))
+                curl_mat = mats["hair_grey"] if spec.get("mature") and i % 4 == 0 else hair
                 objs.append(ellipsoid(f"{cid}_bobcurl_{i}", c, hh * 0.032, hh * 0.03,
-                                      hh * 0.034, hair, {"Head": 1.0},
+                                      hh * 0.034, curl_mat, {"Head": 1.0},
                                       segments=8, rings=6))
 
     # soft fringe over the forehead seam
@@ -819,8 +850,9 @@ def build_hair(P, spec, mats, objs, shape):
                 pts.append(shape.point(u, theta + 0.05 * math.sin(i + k * 0.7),
                                        0.0045 + 0.0035 * (1 - t)))
             rr = [hh * 0.0085, hh * 0.0072, hh * 0.0050, hh * 0.0022]
+            fringe_mat = mats["hair_grey"] if spec.get("mature") and i % 3 == 0 else hair
             objs.append(tube(f"{cid}_fringe3_{i}", pts, rr, [r * 0.7 for r in rr],
-                             5, hair, {"Head": 1.0}))
+                             5, fringe_mat, {"Head": 1.0}))
 
 
 # --------------------------------------------------------------------------- #
@@ -1349,6 +1381,22 @@ def build_accessories(P, spec, mats, objs, shape):
         objs.append(torus(f"{cid}_handbag_handle", c + Vector((0, 0, 0.085)),
                           0.045, 0.006, mats["bag2"], {"Hand_R": 1.0},
                           axis="Y", major_seg=14, minor_seg=5, scale=(1, 1, 0.9)))
+
+    if "moustache" in acc:
+        mz = P["chin_z"] + hh * 0.255 + hh * 0.018
+        span = shape.hw * 0.20
+        for side, sx in (("L", 1), ("R", -1)):
+            pts = []
+            for k in range(4):
+                t = k / 3.0
+                x = sx * span * t
+                u = shape.u_of_z(mz)
+                y = shape.surface_y(x, u) - hh * 0.0045
+                pts.append(Vector((x, y, mz - hh * 0.006 * t)))
+            objs.append(tube(f"{cid}_moustache_{side}", pts,
+                             [hh * 0.0060, hh * 0.0066, hh * 0.0052, hh * 0.0022],
+                             [hh * 0.0030] * 4, 6, mats["facial_hair"],
+                             {"Head": 1.0}))
 
     if "necklace" in acc:
         objs.append(torus(f"{cid}_necklace", Vector((0, -0.005, P["neck_base"] - 0.005)),
@@ -1923,6 +1971,10 @@ def make_materials(spec):
         "skin": mk("skin", spec["skin"], 0.52),
         "skin_dark": mk("skin_dark", blend_hex(spec["skin"], 0x000000, 0.18), 0.6),
         "hair": mk("hair", spec["hair"], 0.38),
+        "hair_grey": mk("hair_grey", spec.get("hair_grey", blend_hex(
+            spec["hair"], 0xd8d4cc, 0.62)), 0.42),
+        "facial_hair": mk("facial_hair", spec.get("facial_hair", blend_hex(
+            spec["hair"], 0xd8d4cc, 0.45)), 0.6),
         "top": mk("top", top["color"], 0.82),
         "top2": mk("top2", top.get("accent", top["color"]), 0.8),
         "top_dark": mk("top_dark", blend_hex(top["color"], 0x000000, 0.16), 0.85),
@@ -2129,8 +2181,10 @@ def age_group(age):
         return "teen"
     if age <= 30:
         return "young_adult"
-    if age <= 55:
+    if age <= 45:
         return "adult"
+    if age <= 64:
+        return "middle_aged"
     return "senior"
 
 

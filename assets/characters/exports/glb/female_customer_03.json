@@ -30,20 +30,44 @@
     "WalkCart"
   ],
   "carry": "basket",
-  "spawn_weight": 1.5,
+  "spawn_weight": 1.6,
   "walk": {
     "stride": 0.98,
     "arm": 0.95,
-    "bounce": 1.0,
-    "stoop": 0.0,
-    "tempo": 1.0,
+    "bounce": 1,
+    "stoop": 0,
+    "tempo": 1,
     "basket_arms": {
-      "UpperArm_L": [-4.23, 3.5, 0.0],
-      "UpperArm_R": [-4.23, -3.5, 0.0],
-      "LowerArm_L": [-92.39, 12.0, 0.0],
-      "LowerArm_R": [-92.39, -12.0, 0.0],
-      "Hand_L": [0.0, 0.0, 0.0],
-      "Hand_R": [0.0, 0.0, 0.0]
+      "UpperArm_L": [
+        -4.23,
+        3.5,
+        0
+      ],
+      "UpperArm_R": [
+        -4.23,
+        -3.5,
+        0
+      ],
+      "LowerArm_L": [
+        -92.39,
+        12,
+        0
+      ],
+      "LowerArm_R": [
+        -92.39,
+        -12,
+        0
+      ],
+      "Hand_L": [
+        0,
+        0,
+        0
+      ],
+      "Hand_R": [
+        0,
+        0,
+        0
+      ]
     }
   },
   "grip_gap": 0.00010223300964716575,

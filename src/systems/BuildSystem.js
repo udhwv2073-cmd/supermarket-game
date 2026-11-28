@@ -9,7 +9,7 @@ import {
   shelfPosition,
   nextFreeSpot
 } from '../data/build.js';
-import { maxSpots } from '../data/products.js';
+import { maxSpots, PRODUCTS } from '../data/products.js';
 import { createShelfMesh, disposeShelfMesh } from '../world/ShelfFactory.js';
 import { createFixtureMesh } from '../world/FixtureFactory.js';
 import { disposeObject3D } from '../utils/dispose.js';
@@ -378,13 +378,18 @@ export default class BuildSystem {
   }
 
   // Sell back the shelf or fixture in front of the player for half its price.
+  // Stock still on a shelf is bought back at half its wholesale value rather
+  // than vanishing when the shelf is scrapped.
   removeAtLook() {
     const target = this.pickAtLook();
     if (!target || !target.item) {
       this.game.ui.toast('Aim at a shelf or fixture to remove it');
       return;
     }
-    const refund = Math.floor((target.item.cost || 0) * 0.5);
+    const stocked = target.kind === 'shelf' ? Math.max(0, target.data.stock || 0) : 0;
+    const wholesale = target.kind === 'shelf' ? (PRODUCTS[target.data.productId]?.price ?? 0) : 0;
+    const stockRefund = Math.floor(stocked * wholesale * 0.5);
+    const refund = Math.floor((target.item.cost || 0) * 0.5) + stockRefund;
     this.game.state.cash = rounded(this.game.state.cash + refund);
     this.endMove();
     if (target.kind === 'shelf') {
@@ -404,7 +409,11 @@ export default class BuildSystem {
     this.game.syncShelfData?.();
     this.game.ui.updateHUD?.();
     this.game.save(true, true);
-    this.game.ui.toast(`Removed (+$${refund})`);
+    this.game.ui.toast(
+      stockRefund > 0
+        ? `Removed (+$${refund}, incl. $${stockRefund} stock)`
+        : `Removed (+$${refund})`
+    );
     this.updateGhost();
   }
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T19:44:04",
+  "generated": "2026-11-28T07:30:37",
   "characters": [
     {
       "id": "male_customer_01",
@@ -33,7 +33,7 @@
         "WalkCart"
       ],
       "carry": "none",
-      "spawn_weight": 0.8,
+      "spawn_weight": 0.9,
       "walk": {
         "stride": 0.92,
         "arm": 1.15,
@@ -79,7 +79,7 @@
         "WalkCart"
       ],
       "carry": "none",
-      "spawn_weight": 1.1,
+      "spawn_weight": 1.2,
       "walk": {
         "stride": 1,
         "arm": 1,
@@ -125,7 +125,7 @@
         "WalkCart"
       ],
       "carry": "basket",
-      "spawn_weight": 1.5,
+      "spawn_weight": 1.6,
       "walk": {
         "stride": 1,
         "arm": 1,
@@ -133,12 +133,36 @@
         "stoop": 0,
         "tempo": 1,
         "basket_arms": {
-          "UpperArm_L": [-0.78, 6.27, 0],
-          "UpperArm_R": [-0.78, -6.27, 0],
-          "LowerArm_L": [-92.72, 12, 0],
-          "LowerArm_R": [-92.72, -12, 0],
-          "Hand_L": [0, 0, 0],
-          "Hand_R": [0, 0, 0]
+          "UpperArm_L": [
+            -0.78,
+            6.27,
+            0
+          ],
+          "UpperArm_R": [
+            -0.78,
+            -6.27,
+            0
+          ],
+          "LowerArm_L": [
+            -92.72,
+            12,
+            0
+          ],
+          "LowerArm_R": [
+            -92.72,
+            -12,
+            0
+          ],
+          "Hand_L": [
+            0,
+            0,
+            0
+          ],
+          "Hand_R": [
+            0,
+            0,
+            0
+          ]
         }
       },
       "grip_gap": 0.00010824791911077441,
@@ -150,15 +174,15 @@
     },
     {
       "id": "male_customer_04",
-      "name": "Young Man (Smart Casual)",
+      "name": "Adult Man",
       "gender": "male",
-      "age_group": "young_adult",
-      "age": 27,
-      "height_m": 1.82,
-      "tris": 21164,
-      "verts": 10910,
+      "age_group": "adult",
+      "age": 34,
+      "height_m": 1.8,
+      "tris": 18810,
+      "verts": 9749,
       "bones": 22,
-      "materials": 23,
+      "materials": 22,
       "animations": [
         "Checkout",
         "Greet",
@@ -182,12 +206,13 @@
       "carry": "none",
       "spawn_weight": 1.4,
       "walk": {
-        "stride": 1.04,
-        "arm": 0.95,
-        "bounce": 0.95,
-        "stoop": 0,
+        "stride": 1,
+        "arm": 0.94,
+        "bounce": 0.94,
+        "stoop": 0.6,
         "tempo": 0.98
       },
+      "grip_gap": null,
       "files": {
         "blend": "assets/characters/blender_source/male_customer_04.blend",
         "glb": "assets/characters/exports/glb/male_customer_04.glb",
@@ -196,15 +221,15 @@
     },
     {
       "id": "male_customer_05",
-      "name": "Adult Man",
+      "name": "Middle-Aged Man",
       "gender": "male",
-      "age_group": "adult",
-      "age": 41,
-      "height_m": 1.75,
-      "tris": 18970,
-      "verts": 9833,
+      "age_group": "middle_aged",
+      "age": 56,
+      "height_m": 1.73,
+      "tris": 19310,
+      "verts": 10015,
       "bones": 22,
-      "materials": 21,
+      "materials": 23,
       "animations": [
         "Checkout",
         "Greet",
@@ -228,21 +253,45 @@
       "carry": "cart",
       "spawn_weight": 1.4,
       "walk": {
-        "stride": 0.98,
-        "arm": 0.9,
-        "bounce": 0.9,
-        "stoop": 1.5,
-        "tempo": 0.96,
+        "stride": 0.9,
+        "arm": 0.84,
+        "bounce": 0.8,
+        "stoop": 3.2,
+        "tempo": 0.9,
         "cart_arms": {
-          "UpperArm_L": [-5.36, 8.23, 0],
-          "UpperArm_R": [-5.36, -8.23, 0],
-          "LowerArm_L": [-84.27, 12, 0],
-          "LowerArm_R": [-84.27, -12, 0],
-          "Hand_L": [0, 0, 0],
-          "Hand_R": [0, 0, 0]
+          "UpperArm_L": [
+            -6.02,
+            6.94,
+            0
+          ],
+          "UpperArm_R": [
+            -6.02,
+            -6.94,
+            0
+          ],
+          "LowerArm_L": [
+            -86.84,
+            12,
+            0
+          ],
+          "LowerArm_R": [
+            -86.84,
+            -12,
+            0
+          ],
+          "Hand_L": [
+            0,
+            0,
+            0
+          ],
+          "Hand_R": [
+            0,
+            0,
+            0
+          ]
         }
       },
-      "grip_gap": 0.00009837370698364375,
+      "grip_gap": 0.00005899243249257874,
       "files": {
         "blend": "assets/characters/blender_source/male_customer_05.blend",
         "glb": "assets/characters/exports/glb/male_customer_05.glb",
@@ -281,7 +330,7 @@
         "WalkCart"
       ],
       "carry": "none",
-      "spawn_weight": 1,
+      "spawn_weight": 1.1,
       "walk": {
         "stride": 0.8,
         "arm": 0.72,
@@ -327,7 +376,7 @@
         "WalkCart"
       ],
       "carry": "none",
-      "spawn_weight": 0.8,
+      "spawn_weight": 0.9,
       "walk": {
         "stride": 0.9,
         "arm": 1.2,
@@ -373,7 +422,7 @@
         "WalkCart"
       ],
       "carry": "none",
-      "spawn_weight": 1.1,
+      "spawn_weight": 1.2,
       "walk": {
         "stride": 0.95,
         "arm": 0.95,
@@ -419,7 +468,7 @@
         "WalkCart"
       ],
       "carry": "basket",
-      "spawn_weight": 1.5,
+      "spawn_weight": 1.6,
       "walk": {
         "stride": 0.98,
         "arm": 0.95,
@@ -427,12 +476,36 @@
         "stoop": 0,
         "tempo": 1,
         "basket_arms": {
-          "UpperArm_L": [-4.23, 3.5, 0],
-          "UpperArm_R": [-4.23, -3.5, 0],
-          "LowerArm_L": [-92.39, 12, 0],
-          "LowerArm_R": [-92.39, -12, 0],
-          "Hand_L": [0, 0, 0],
-          "Hand_R": [0, 0, 0]
+          "UpperArm_L": [
+            -4.23,
+            3.5,
+            0
+          ],
+          "UpperArm_R": [
+            -4.23,
+            -3.5,
+            0
+          ],
+          "LowerArm_L": [
+            -92.39,
+            12,
+            0
+          ],
+          "LowerArm_R": [
+            -92.39,
+            -12,
+            0
+          ],
+          "Hand_L": [
+            0,
+            0,
+            0
+          ],
+          "Hand_R": [
+            0,
+            0,
+            0
+          ]
         }
       },
       "grip_gap": 0.00010223300964716575,
@@ -444,15 +517,15 @@
     },
     {
       "id": "female_customer_04",
-      "name": "Young Woman (Smart Casual)",
+      "name": "Adult Woman",
       "gender": "female",
-      "age_group": "young_adult",
-      "age": 28,
-      "height_m": 1.73,
-      "tris": 20602,
-      "verts": 10665,
+      "age_group": "adult",
+      "age": 34,
+      "height_m": 1.71,
+      "tris": 20078,
+      "verts": 10399,
       "bones": 22,
-      "materials": 22,
+      "materials": 24,
       "animations": [
         "Checkout",
         "Greet",
@@ -476,12 +549,13 @@
       "carry": "none",
       "spawn_weight": 1.4,
       "walk": {
-        "stride": 0.95,
-        "arm": 0.9,
-        "bounce": 0.95,
-        "stoop": 0,
+        "stride": 1,
+        "arm": 0.92,
+        "bounce": 0.92,
+        "stoop": 0.6,
         "tempo": 0.98
       },
+      "grip_gap": null,
       "files": {
         "blend": "assets/characters/blender_source/female_customer_04.blend",
         "glb": "assets/characters/exports/glb/female_customer_04.glb",
@@ -490,15 +564,15 @@
     },
     {
       "id": "female_customer_05",
-      "name": "Adult Woman",
+      "name": "Middle-Aged Woman",
       "gender": "female",
-      "age_group": "adult",
-      "age": 42,
-      "height_m": 1.64,
-      "tris": 19906,
-      "verts": 10317,
+      "age_group": "middle_aged",
+      "age": 56,
+      "height_m": 1.6,
+      "tris": 21512,
+      "verts": 11100,
       "bones": 22,
-      "materials": 21,
+      "materials": 24,
       "animations": [
         "Checkout",
         "Greet",
@@ -522,21 +596,45 @@
       "carry": "cart",
       "spawn_weight": 1.4,
       "walk": {
-        "stride": 0.9,
-        "arm": 0.85,
-        "bounce": 0.9,
-        "stoop": 1,
-        "tempo": 0.94,
+        "stride": 0.86,
+        "arm": 0.8,
+        "bounce": 0.8,
+        "stoop": 2.6,
+        "tempo": 0.9,
         "cart_arms": {
-          "UpperArm_L": [-10.19, 2.66, 0],
-          "UpperArm_R": [-10.19, -2.66, 0],
-          "LowerArm_L": [-92.34, 12, 0],
-          "LowerArm_R": [-92.34, -12, 0],
-          "Hand_L": [0, 0, 0],
-          "Hand_R": [0, 0, 0]
+          "UpperArm_L": [
+            -13.11,
+            1.84,
+            0
+          ],
+          "UpperArm_R": [
+            -13.11,
+            -1.84,
+            0
+          ],
+          "LowerArm_L": [
+            -94.31,
+            12,
+            0
+          ],
+          "LowerArm_R": [
+            -94.31,
+            -12,
+            0
+          ],
+          "Hand_L": [
+            0,
+            0,
+            0
+          ],
+          "Hand_R": [
+            0,
+            0,
+            0
+          ]
         }
       },
-      "grip_gap": 0.00005912011807293663,
+      "grip_gap": 0.000041201721479404134,
       "files": {
         "blend": "assets/characters/blender_source/female_customer_05.blend",
         "glb": "assets/characters/exports/glb/female_customer_05.glb",
@@ -575,7 +673,7 @@
         "WalkCart"
       ],
       "carry": "none",
-      "spawn_weight": 1,
+      "spawn_weight": 1.1,
       "walk": {
         "stride": 0.74,
         "arm": 0.68,

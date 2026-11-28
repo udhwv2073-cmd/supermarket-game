@@ -6,7 +6,7 @@ import { currentSellPrice } from '../systems/Pricing.js';
 import { onHappyCustomer, onAngryCustomer } from '../systems/Reputation.js';
 import { cloneCharacter, loadModel } from '../utils/AssetLoader.js';
 import { refreshShelfVisual } from '../world/ShelfFactory.js';
-import { CUSTOMER_CHARACTERS, pickCustomerCharacter } from '../data/customers.js';
+import { CITY_PEDESTRIAN_CHARACTERS, pickCustomerCharacter } from '../data/customers.js';
 import { makeCarryProp, releaseCarryProp } from './CustomerProps.js';
 
 // Clips that play once and clamp; everything else loops.
@@ -251,7 +251,7 @@ export function waitingCustomer(game) {
 export function doAutoCheckout(game, c) {
   const total = basketTotal(game, c);
   game.state.cash = rounded(game.state.cash + total);
-  game.state.lifetimeRevenue += total;
+  game.state.lifetimeRevenue = rounded(game.state.lifetimeRevenue + total);
   game.runtime.stats.revenue += total;
   game.runtime.stats.happy++;
   onHappyCustomer(game);
@@ -262,10 +262,9 @@ export function doAutoCheckout(game, c) {
   game.save();
 }
 
-/** Begin loading the most common characters in the background. */
-export function warmCustomerModels(limit = 6) {
-  const ordered = [...CUSTOMER_CHARACTERS].sort((a, b) => b.weight - a.weight).slice(0, limit);
-  return Promise.all(ordered.map((c) => loadModel(c.file))).catch((err) => {
+/** Begin loading the six models shared with the city pedestrians. */
+export function warmCustomerModels() {
+  return Promise.all(CITY_PEDESTRIAN_CHARACTERS.map((c) => loadModel(c.file))).catch((err) => {
     console.warn('[Customer] warm-up skipped', err);
   });
 }

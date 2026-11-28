@@ -91,18 +91,27 @@ export default class ShopUI {
     if (this.game.mode === 'modal') this.game.startPlaying();
   }
 
+  // The shift counter lives above the tabs, so it must refresh when a shift
+  // settles instead of waiting for the shop to be reopened.
+  renderStatus() {
+    if (!this.el) return;
+    const business = BUSINESSES[this.currentBusinessId];
+    if (!business) return;
+    const activity = SHOP_ACTIVITIES[business.id];
+    const served = shiftsServedToday(this.game.state, business.id);
+    const limit = activity?.dailyLimit || 0;
+    this.el.querySelector('#shopStatus').innerHTML = `
+      <div><span class="shop-status-label">STAFF</span> ${business.staff.name}</div>
+      <div><span class="shop-status-label">SHIFTS</span> ${served}/${limit} today</div>
+    `;
+  }
+
   render() {
     if (!this.el) return;
     const business = BUSINESSES[this.currentBusinessId];
     if (!business) return;
-    const status = this.el.querySelector('#shopStatus');
     const activity = SHOP_ACTIVITIES[business.id];
-    const served = shiftsServedToday(this.game.state, business.id);
-    const limit = activity?.dailyLimit || 0;
-    status.innerHTML = `
-      <div><span class="shop-status-label">STAFF</span> ${business.staff.name}</div>
-      <div><span class="shop-status-label">SHIFTS</span> ${served}/${limit} today</div>
-    `;
+    this.renderStatus();
     this.el.querySelectorAll('[data-shoptab]').forEach((button) => {
       button.classList.toggle('active', button.dataset.shoptab === this.tab);
       button.disabled = button.dataset.shoptab === 'activity' && !activity;
@@ -331,6 +340,7 @@ export default class ShopUI {
     if (!result?.ok) return;
     if (result.finished) {
       this.lastGrade = result.summary?.quality ?? 0;
+      this.renderStatus();
       this.renderSummary(
         BUSINESSES[this.currentBusinessId],
         SHOP_ACTIVITIES[this.currentBusinessId],

@@ -2,8 +2,8 @@
 
 Twelve fully rigged, animated supermarket shoppers authored in Blender 5.2 and
 exported to glTF 2.0 for the Three.js game. Six male, six female, covering
-children, teenagers, young adults, adults and seniors — each with a unique
-face, hair, silhouette, outfit, palette and accessories.
+children, teenagers, young adults, adults, middle-aged adults and seniors —
+each with a unique face, hair, silhouette, outfit, palette and accessories.
 
 ![Character lineup](renders/lineup.png)
 
@@ -11,23 +11,25 @@ face, hair, silhouette, outfit, palette and accessories.
 
 ## Roster
 
-| ID                   | Character                         | Age group   | Height | Carry  | Spawn weight |
-| -------------------- | --------------------------------- | ----------- | -----: | ------ | -----------: |
-| `male_customer_01`   | Young Boy (hoodie, backpack)      | child       | 1.31 m | —      |          0.9 |
-| `male_customer_02`   | Teenage Boy (bomber, headphones)  | teen        | 1.63 m | —      |          1.2 |
-| `male_customer_03`   | Young Man (henley, hand basket)   | young adult | 1.77 m | basket |          1.6 |
-| `male_customer_04`   | Young Man (smart casual, glasses) | young adult | 1.82 m | —      |          1.5 |
-| `male_customer_05`   | Adult Man (jacket, shopping cart) | adult       | 1.75 m | cart   |          1.5 |
-| `male_customer_06`   | Elderly Man (cardigan, cap)       | senior      | 1.69 m | —      |          1.1 |
-| `female_customer_01` | Young Girl (puffer, ponytail)     | child       | 1.29 m | —      |          0.9 |
-| `female_customer_02` | Teenage Girl (sweater, beanie)    | teen        | 1.60 m | —      |          1.2 |
-| `female_customer_03` | Young Woman (blouse, hand basket) | young adult | 1.68 m | basket |          1.6 |
-| `female_customer_04` | Young Woman (smart casual, tote)  | young adult | 1.73 m | —      |          1.5 |
-| `female_customer_05` | Adult Woman (coat, shopping cart) | adult       | 1.64 m | cart   |          1.5 |
-| `female_customer_06` | Elderly Woman (cardigan, scarf)   | senior      | 1.57 m | —      |          1.1 |
+| ID                   | Character                             | Age group   | Height | Carry  | Spawn weight |
+| -------------------- | ------------------------------------- | ----------- | -----: | ------ | -----------: |
+| `male_customer_01`   | Young Boy (hoodie, backpack)          | child       | 1.31 m | —      |          0.9 |
+| `male_customer_02`   | Teenage Boy (bomber, headphones)      | teen        | 1.63 m | —      |          1.2 |
+| `male_customer_03`   | Young Man (polo, hand basket)         | young adult | 1.77 m | basket |          1.6 |
+| `male_customer_04`   | Adult Man (shirt, watch)              | adult       | 1.80 m | —      |          1.4 |
+| `male_customer_05`   | Middle-Aged Man (cardigan, moustache) | middle-aged | 1.73 m | cart   |          1.4 |
+| `male_customer_06`   | Elderly Man (cardigan, glasses)       | senior      | 1.69 m | —      |          1.1 |
+| `female_customer_01` | Young Girl (puffer, pigtails)         | child       | 1.29 m | —      |          0.9 |
+| `female_customer_02` | Teenage Girl (jacket, necklace)       | teen        | 1.60 m | —      |          1.2 |
+| `female_customer_03` | Young Woman (tee, hand basket)        | young adult | 1.68 m | basket |          1.6 |
+| `female_customer_04` | Adult Woman (jacket, tote)            | adult       | 1.71 m | —      |          1.4 |
+| `female_customer_05` | Middle-Aged Woman (cardigan, glasses) | middle-aged | 1.60 m | cart   |          1.4 |
+| `female_customer_06` | Elderly Woman (cardigan, handbag)     | senior      | 1.57 m | —      |          1.1 |
 
-Weights add up to 15.6; young adults are the most common group, children and
-seniors the rarest. Gender stays at 50/50.
+Weights add up to 15.2; young adults are the most common group, children and
+seniors the rarest. Gender stays at 50/50. The middle-aged pair is modelled
+rather than relabelled: grey streaks in the hair, a moustache on the man,
+soft nasolabial/forehead creases, a slight stoop and mature clothing.
 
 ## Files
 
@@ -56,7 +58,7 @@ tools/blender/
   `Thigh_L/R`, `Shin_L/R`, `Foot_L/R`, `Toe_L/R`. Weights are assigned during
   mesh construction (loft/tube vertex groups), not by automatic weights, so
   elbows, knees and shoulders deform predictably.
-- **Mesh:** ~18–21k triangles per character. On load, the 21 material slots
+- **Mesh:** ~18–22k triangles per character. On load, the 20–24 material slots
   are baked into vertex colours and merged by finish into at most four skinned
   meshes, using one shared material per finish across shoppers. Basket and cart
   props are merged once per material and reused. Seven shoppers add 28–36 draw
@@ -125,10 +127,10 @@ the live session, so the interactive file is not mutated by a build.
   basket's side rims.
 - `src/core/Game.js` — warms the six most common models 1.5 s after boot so the
   first arrivals do not stutter.
-
-The first GLB profile is loaded on demand and cached; the procedural
-`CustomerModel.js` is still used by the city-life background pedestrians, so a
-missing GLB never breaks the game.
+- `src/world/CityLife.js` — sidewalk pedestrians reuse those same six cached
+  GLBs, cloned per walker with their own `AnimationMixer` (`Walk` moving,
+  `Idle` waiting). The procedural `CustomerModel.js` remains only as a
+  load-failure fallback, so a missing GLB never breaks the game.
 
 ## Verification
 
@@ -140,7 +142,10 @@ npm run build
 `tests/customers.test.js` verifies all twelve GLBs exist, each has one skin
 with at least 20 joints, at least the twelve required clips, feet at zero,
 height within 12 cm of the roster, matching metadata, and that 6,000 weighted
-picks cover every character and age group.
+picks cover every character and age group. It also checks the six-tier roster
+(one character per tier and gender), the middle-aged age metadata, grey-hair
+and facial-hair materials, the mature stoop, and that the six city pedestrian
+models exist.
 
 The final integration was also checked in a headless Chromium run against the
 Vite dev server: seven shoppers spawned with distinct character IDs, 18

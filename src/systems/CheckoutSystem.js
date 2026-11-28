@@ -81,7 +81,7 @@ export default class CheckoutSystem {
     game.startPlaying();
     if (ok) {
       game.state.cash = rounded(game.state.cash + total);
-      game.state.lifetimeRevenue += total;
+      game.state.lifetimeRevenue = rounded(game.state.lifetimeRevenue + total);
       game.runtime.stats.revenue += total;
       game.runtime.stats.happy++;
       onHappyCustomer(game);

@@ -1,6 +1,7 @@
 # Customer character build report
 
 Generated: 2026-11-27
+Roster revised: 2026-11-28 (`_04` adults, `_05` middle-aged; four rebuilt)
 Blender: 5.2.0 LTS (headless, factory startup)
 Exporter: glTF 2.0 binary, Actions mode, baked animation
 
@@ -8,31 +9,36 @@ Exporter: glTF 2.0 binary, Actions mode, baked animation
 
 12 of 12 characters authored, rigged, animated, exported and copied into
 `public/models/customers/`. Each GLB carries one skin with 22 joints, 18 clips,
-21–22 material slots and 18–21k triangles. Total geometry across the set is
-235,344 triangles.
+20–24 material slots and 18–22k triangles. Total geometry across the set is
+234,412 triangles.
 
 | ID                   | Age         | Height |   Tris | Bones | Clips | Carry  |
 | -------------------- | ----------- | -----: | -----: | ----: | ----: | ------ |
 | `male_customer_01`   | child       | 1.31 m | 19,486 |    22 |    18 | —      |
 | `male_customer_02`   | teen        | 1.63 m | 19,734 |    22 |    18 | —      |
 | `male_customer_03`   | young adult | 1.77 m | 18,370 |    22 |    18 | basket |
-| `male_customer_04`   | young adult | 1.82 m | 21,164 |    22 |    18 | —      |
-| `male_customer_05`   | adult       | 1.75 m | 18,970 |    22 |    18 | cart   |
+| `male_customer_04`   | adult       | 1.80 m | 18,810 |    22 |    18 | —      |
+| `male_customer_05`   | middle-aged | 1.73 m | 19,310 |    22 |    18 | cart   |
 | `male_customer_06`   | senior      | 1.69 m | 18,914 |    22 |    18 | —      |
 | `female_customer_01` | child       | 1.29 m | 19,046 |    22 |    18 | —      |
 | `female_customer_02` | teen        | 1.60 m | 19,722 |    22 |    18 | —      |
 | `female_customer_03` | young adult | 1.68 m | 18,830 |    22 |    18 | basket |
-| `female_customer_04` | young adult | 1.73 m | 20,602 |    22 |    18 | —      |
-| `female_customer_05` | adult       | 1.64 m | 19,906 |    22 |    18 | cart   |
+| `female_customer_04` | adult       | 1.71 m | 20,078 |    22 |    18 | —      |
+| `female_customer_05` | middle-aged | 1.60 m | 21,512 |    22 |    18 | cart   |
 | `female_customer_06` | senior      | 1.57 m | 20,600 |    22 |    18 | —      |
 
-Roster: 6 male / 6 female; 2 children, 2 teenagers, 4 young adults, 2 adults,
-2 seniors. Spawn weights are in `src/data/customers.js`.
+Roster: 6 male / 6 female; 2 children, 2 teenagers, 2 young adults, 2 adults,
+2 middle-aged and 2 seniors. Spawn weights are in `src/data/customers.js` and
+mirrored in each character's JSON metadata.
 
 ## What was built
 
 - **Faces:** shaped head with jaw, cheek and brow planes, nose bridge/tip,
-  ears, inset eye whites, irises, pupils, lashes, brows, lips and mouth.
+  ears, inset eye whites, irises, pupils, lashes, brows, lips and mouth. The
+  mature specs add soft nasolabial folds and two forehead creases.
+- **Middle-aged details:** grey streaks are woven into the hair fringe and
+  curls, the man has a moustache built from swept tubes, and both characters
+  use a heavier frame, slower stride and slight stoop.
 - **Hair:** short, bowl, undercut, side part, quiff, spiky, bob, ponytail,
   bun, long straight, wavy and curly variants built from lofted caps and locks.
 - **Clothing:** hoodies, sweaters, shirts, blouses, cardigans, coats and
@@ -51,8 +57,8 @@ Roster: 6 male / 6 female; 2 children, 2 teenagers, 4 young adults, 2 adults,
 
 ## Visual QA
 
-- Full lineup render: `assets/characters/renders/lineup.png`
-  (1800×700 source: `lineup-full.png`).
+- Full lineup render: `assets/characters/renders/lineup.png` (1800×700),
+  re-rendered 2026-11-28 from the current GLBs.
 - In-game frame: `assets/characters/renders/gameplay.png`.
 - Checked for: distinct silhouettes and heights, varied skin tones, hair
   volumes that read from behind, clothing colour separation, no interpenetrating
@@ -100,13 +106,17 @@ suite and gameplay code, not replayed in the browser.
   triangles (~19.9k each). A lighter wave with two carriers measured 28 calls
   (~4 each). Before batching, the same protocol measured 25.2 calls per
   shopper; the crowd is now ~80% cheaper.
+- Current roster re-probe (2026-11-28): seven shoppers measured 322 calls /
+  147,060 tris (288 / 11,802 with them hidden); six GLB pedestrians measured
+  280 / 126,652 (258 / 9,722 hidden), so the crowd costs 34 calls and the
+  pedestrians 22. Each of the six pedestrian GLBs was requested once.
 - Frame times here come from a software WebGL renderer and are not
   representative of GPU performance; draw calls and triangles are the
   meaningful figures.
 
 ## Validation
 
-- `npm test` — 75/75 passing, including `tests/customers.test.js`, which checks
+- `npm test` — 86/86 passing, including `tests/customers.test.js`, which checks
   the roster split, one skin with ≥20 joints, all required clips, camera-free
   export, feet at Y=0, height within 12 cm of the roster, metadata agreement,
   a ≤2 cm solved grip for every carrier and weighted coverage over 6,000 draws.
@@ -114,6 +124,12 @@ suite and gameplay code, not replayed in the browser.
   integration, cart and basket changes).
 - GLB inspection — every file parses, 1 skin, 22 joints, 18 animations,
   21–22 material slots, no cameras or lights.
+- Live browser session (2026-11-28) — five GLB pedestrians walked and idled;
+  shoppers spawned with 18 clips; the bakery counter, a paid shift, all five
+  neighbour counters, cash and card checkout (including rejected wrong
+  amounts), build place/move/rotate/remove and save/reload were exercised. A
+  unit test now plays a perfect shift at every shop and checks its reward,
+  limit and round data. Draw-call and GLB-request counts are recorded above.
 
 ## Rebuild
 

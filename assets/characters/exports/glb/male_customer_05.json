@@ -1,14 +1,14 @@
 {
   "id": "male_customer_05",
-  "name": "Adult Man",
+  "name": "Middle-Aged Man",
   "gender": "male",
-  "age_group": "adult",
-  "age": 41,
-  "height_m": 1.75,
-  "tris": 18970,
-  "verts": 9833,
+  "age_group": "middle_aged",
+  "age": 56,
+  "height_m": 1.73,
+  "tris": 19310,
+  "verts": 10015,
   "bones": 22,
-  "materials": 21,
+  "materials": 23,
   "animations": [
     "Checkout",
     "Greet",
@@ -32,21 +32,45 @@
   "carry": "cart",
   "spawn_weight": 1.4,
   "walk": {
-    "stride": 0.98,
-    "arm": 0.9,
-    "bounce": 0.9,
-    "stoop": 1.5,
-    "tempo": 0.96,
+    "stride": 0.9,
+    "arm": 0.84,
+    "bounce": 0.8,
+    "stoop": 3.2,
+    "tempo": 0.9,
     "cart_arms": {
-      "UpperArm_L": [-5.36, 8.23, 0.0],
-      "UpperArm_R": [-5.36, -8.23, 0.0],
-      "LowerArm_L": [-84.27, 12.0, 0.0],
-      "LowerArm_R": [-84.27, -12.0, 0.0],
-      "Hand_L": [0.0, 0.0, 0.0],
-      "Hand_R": [0.0, 0.0, 0.0]
+      "UpperArm_L": [
+        -6.02,
+        6.94,
+        0
+      ],
+      "UpperArm_R": [
+        -6.02,
+        -6.94,
+        0
+      ],
+      "LowerArm_L": [
+        -86.84,
+        12,
+        0
+      ],
+      "LowerArm_R": [
+        -86.84,
+        -12,
+        0
+      ],
+      "Hand_L": [
+        0,
+        0,
+        0
+      ],
+      "Hand_R": [
+        0,
+        0,
+        0
+      ]
     }
   },
-  "grip_gap": 9.837370698364375e-5,
+  "grip_gap": 0.00005899243249257874,
   "files": {
     "blend": "assets/characters/blender_source/male_customer_05.blend",
     "glb": "assets/characters/exports/glb/male_customer_05.glb",

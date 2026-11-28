@@ -11,7 +11,8 @@ import {
   trafficPhase
 } from '../data/city.js';
 import { makeCustomerModel } from '../entities/CustomerModel.js';
-import { cloneModel } from '../utils/AssetLoader.js';
+import { cloneCharacter, cloneModel } from '../utils/AssetLoader.js';
+import { CITY_PEDESTRIAN_CHARACTERS } from '../data/customers.js';
 
 function rand(a, b) {
   return a + Math.random() * (b - a);
@@ -28,7 +29,9 @@ const CAR_COLORS = {
   'city/van.glb': 0x9aa3a8
 };
 
-const MAX_PEDS = 8;
+// Rigged walkers cost more than the old procedural bodies, so the pavement
+// population is capped lower; the same six GLBs are preloaded for shoppers.
+const MAX_PEDS = 6;
 
 export default class CityLife {
   constructor(game, cityWorld) {
@@ -44,7 +47,7 @@ export default class CityLife {
   // Spawn
   // -------------------------------------------------------------------------
   build() {
-    for (let i = 0; i < 6; i++) this.spawnPed();
+    for (let i = 0; i < 5; i++) this.spawnPed();
     this.buildFleet();
   }
 
@@ -61,17 +64,16 @@ export default class CityLife {
     if (this.peds.length >= MAX_PEDS) return null;
     const spot = this.pickSpawn();
     if (!spot) return null;
-    const model = makeCustomerModel();
-    const g = model.root;
-    g.position.set(spot.x, 0, spot.z);
-    this.city.group.add(g);
+    const group = new THREE.Group();
+    group.position.set(spot.x, 0, spot.z);
+    this.city.group.add(group);
     const ped = {
-      group: g,
-      rig: model.rig,
-      armL: model.armL,
-      armR: model.armR,
-      legL: model.legL,
-      legR: model.legR,
+      group,
+      character: pick(CITY_PEDESTRIAN_CHARACTERS),
+      mixer: null,
+      actions: null,
+      anim: null,
+      rig: null,
       speed: rand(0.9, 1.45),
       phase: rand(0, 6),
       path: null,
@@ -83,7 +85,65 @@ export default class CityLife {
     };
     this.peds.push(ped);
     this.planPed(ped);
+    this.dressPed(ped);
     return ped;
+  }
+
+  // Sidewalk walkers use the same rigged customer GLBs as the store, cloned per
+  // instance so each has its own skeleton and animation mixer. The procedural
+  // body is only a load-failure fallback.
+  dressPed(ped) {
+    cloneCharacter(ped.character.file)
+      .then((model) => {
+        if (!this.peds.includes(ped)) return; // recycled while the GLB loaded
+        if (!model) {
+          this.dressFallbackPed(ped);
+          return;
+        }
+        const mixer = new THREE.AnimationMixer(model);
+        const actions = {};
+        for (const clip of model.userData.animations || []) {
+          if (clip.name !== 'Walk' && clip.name !== 'Idle') continue;
+          const action = mixer.clipAction(clip);
+          action.setLoop(THREE.LoopRepeat, Infinity);
+          action.setEffectiveWeight(0);
+          action.play();
+          actions[clip.name] = action;
+        }
+        // Only attach once the mixer is ready, so a failure cannot leave the
+        // GLB and the procedural fallback in the same group.
+        ped.mixer = mixer;
+        ped.actions = actions;
+        ped.group.add(model);
+        this.playPed(ped, ped.moving ? 'Walk' : 'Idle', 0);
+      })
+      .catch((err) => {
+        console.warn('[CityLife] Pedestrian GLB skipped', err);
+        if (this.peds.includes(ped)) this.dressFallbackPed(ped);
+      });
+  }
+
+  dressFallbackPed(ped) {
+    const model = makeCustomerModel();
+    ped.rig = model.rig;
+    ped.armL = model.armL;
+    ped.armR = model.armR;
+    ped.legL = model.legL;
+    ped.legR = model.legR;
+    ped.group.add(model.root);
+  }
+
+  playPed(ped, name, fade = 0.22) {
+    if (!ped.actions) return;
+    const next = ped.actions[name];
+    if (!next || ped.anim === name) return;
+    const prev = ped.actions[ped.anim];
+    if (prev) prev.fadeOut(fade);
+    next.reset();
+    next.setEffectiveWeight(1);
+    if (fade > 0) next.fadeIn(fade);
+    next.play();
+    ped.anim = name;
   }
 
   // Route a walker to a random destination through the city nav grid, so it
@@ -332,9 +392,10 @@ export default class CityLife {
 
       // Walkers far behind the player are recycled instead of piling up.
       if (
-        this.peds.length > 5 &&
+        this.peds.length > 4 &&
         Math.hypot(pos.x - this.game.player.pos.x, pos.z - this.game.player.pos.z) > 130
       ) {
+        ped.mixer?.stopAllAction();
         this.city.group.remove(ped.group);
         this.peds.splice(i, 1);
         continue;
@@ -378,7 +439,12 @@ export default class CityLife {
         ped.fallback = false;
       }
 
-      this.animatePed(ped, dt);
+      if (ped.mixer) {
+        this.playPed(ped, ped.moving ? 'Walk' : 'Idle');
+        ped.mixer.update(dt);
+      } else {
+        this.animatePed(ped, dt);
+      }
     }
   }
 
